@@ -9,9 +9,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('images/Backg1.jpeg');
+    background: url('images/Backg1.jpeg') no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
     font-family: 'Segoe UI', sans-serif;
 }
 
@@ -19,63 +18,57 @@ body {
 .overlay {
     background: rgba(0, 0, 0, 0.75);
     min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 40px 0;
 }
 
-/* Glass container */
+/* Main Glass Container */
 .container {
     width: 950px;
-    margin: auto;
     padding: 40px;
-    border-radius: 25px;
-    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
     background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 40px rgba(255, 140, 0, 0.3);
+    box-shadow: 0 0 40px rgba(255, 140, 0, 0.4);
     color: white;
 }
 
-/* Header Styling */
-.header {
+/* Navbar */
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
-    border-bottom: 2px solid orange;
     padding-bottom: 15px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid orange;
 }
 
-.left-logo {
+.nav-left {
     display: flex;
     align-items: center;
 }
 
 .logo-img {
-    width: 65px;
-    height: 65px;
-    margin-right: 12px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
+    margin-right: 12px;
     border: 2px solid orange;
 }
 
 .gym-name {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     letter-spacing: 1px;
 }
 
-.right-title h1 {
-    font-size: 38px;
-    color: orange;
-    margin: 0;
-    text-shadow: 0 0 10px orange;
+.nav-right .btn-orange {
+    margin-left: 10px;
 }
 
-/* Buttons Top */
-.top-buttons {
-    text-align: center;
-    margin: 30px 0;
-}
-
+/* Buttons */
 .btn-orange {
     background: linear-gradient(45deg, orange, darkorange);
     border: none;
@@ -85,7 +78,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s ease;
-    box-shadow: 0 0 10px rgba(255, 165, 0, 0.6);
+    box-shadow: 0 0 12px rgba(255, 165, 0, 0.6);
 }
 
 .btn-orange:hover {
@@ -93,30 +86,78 @@ body {
     box-shadow: 0 0 20px orange;
 }
 
-/* Form Layout */
+/* Form Styling */
 .form-group {
     margin-bottom: 20px;
     display: flex;
     align-items: center;
 }
 
-label {
+.form-group label {
     width: 260px;
-    font-size: 18px;
+    font-size: 17px;
+    font-weight: 500;
 }
 
-input[type=text], select {
+/* Inputs */
+input[type=text],
+select,
+textarea {
     width: 320px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 8px;
     border: none;
     font-size: 15px;
+    outline: none;
+}
+
+/* Dropdown & textbox focus effect */
+input[type=text]:focus,
+select:focus {
+    box-shadow: 0 0 10px orange;
+}
+
+/* Checkbox & CheckboxList */
+input[type=checkbox] {
+    transform: scale(1.2);
+}
+
+/* BMI Label */
+#Label1 {
+    font-weight: bold;
+    font-size: 18px;
+    color: orange;
 }
 
 /* Bottom Buttons */
 .bottom-buttons {
     text-align: center;
     margin-top: 30px;
+}
+
+.bottom-buttons .btn-orange {
+    margin: 0 10px;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+    .container {
+        width: 90%;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-group label {
+        margin-bottom: 5px;
+    }
+
+    input[type=text],
+    select {
+        width: 100%;
+    }
 }
 
     </style>
@@ -127,15 +168,19 @@ input[type=text], select {
         <div class="overlay">
             <div class="container">
 
-                <div class="left-logo">
-        <img src="logo.png" alt="Gym Logo" class="logo-img" />
+<div class="navbar">
+
+    <div class="nav-left">
+        <img src="images\image-removebg-preview (1).png" class="logo-img" />
         <span class="gym-name">POWER GYM</span>
     </div>
 
-                <div class="top-buttons">
-                    <asp:Button ID="Button1" runat="server" Text="Members" CssClass="btn-orange" />
-                    <asp:Button ID="Button2" runat="server" Text="Members with Trainer" CssClass="btn-orange" />
-                </div>
+    <div class="nav-right">
+        <asp:Button ID="Button1" runat="server" Text="Members" CssClass="btn-orange" />
+        <asp:Button ID="Button2" runat="server" Text="Members with Trainer" CssClass="btn-orange" />
+    </div>
+
+</div>
 
                 <div class="form-group">
                     <label>Membership Type</label>
